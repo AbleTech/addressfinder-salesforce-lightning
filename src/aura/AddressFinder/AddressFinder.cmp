@@ -1,0 +1,13 @@
+<aura:component implements="force:appHostable,force:lightningQuickAction,flexipage:availableForAllPageTypes" access="global" >
+    <ltng:require scripts="{!$Resource.AddressFinderWidget}" afterScriptsLoaded="{!c.afterScriptsLoaded}" />
+    
+    <aura:attribute access="global" name="afKey" type="String" default="B8F6KAMNGCTJYPDE4HL9"/>
+    <aura:attribute access="global" name="countryCode" type="String" default="nz"/>
+    
+    <aura:attribute name="isRendered" type="Boolean" default="false"/>
+    <aura:attribute name="isScriptLoaded" type="Boolean" default="false"/>
+    <aura:attribute name="isWidgetSetup" type="Boolean" default="false"/>
+    
+    <aura:handler event="aura:doneRendering" action="{!c.handleDoneRendering}"/>
+
+</aura:component>

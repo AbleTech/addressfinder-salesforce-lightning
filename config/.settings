@@ -1,0 +1,19 @@
+{
+    "projectName": "AddressFinder",
+    "username": "andy@abletech.co.nz",
+    "id": "5e70d230-515d-11e7-bffe-b3746701b9f1",
+    "namespace": "addressfinder",
+    "orgType": "developer",
+    "loginUrl": "https://login.salesforce.com/",
+    "instanceUrl": "https://addressfinder-dev-ed.my.salesforce.com",
+    "workspace": "/Users/andrewfrench/repositories/abletech",
+    "subscription": [
+        "CorsWhitelistOrigin",
+        "CspTrustedSite",
+        "CustomApplication",
+        "CustomApplicationComponent",
+        "CustomMetadata",
+        "InstalledPackage",
+        "StaticResource"
+    ]
+}

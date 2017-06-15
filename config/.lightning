@@ -1,0 +1,325 @@
+[
+    {
+        "attributes": {
+            "type": "AuraDefinition",
+            "url": "/services/data/v40.0/tooling/sobjects/AuraDefinition/0Ad7F000000D0dPSAS"
+        },
+        "Id": "0Ad7F000000D0dPSAS",
+        "AuraDefinitionBundleId": "0Ab7F000000CkUWSA0",
+        "AuraDefinitionBundle": {
+            "attributes": {
+                "type": "AuraDefinitionBundle",
+                "url": "/services/data/v40.0/tooling/sobjects/AuraDefinitionBundle/0Ab7F000000CkUWSA0"
+            },
+            "DeveloperName": "AddressFinder"
+        },
+        "DefType": "COMPONENT",
+        "Format": "XML"
+    },
+    {
+        "attributes": {
+            "type": "AuraDefinition",
+            "url": "/services/data/v40.0/tooling/sobjects/AuraDefinition/0Ad7F000000D0dUSAS"
+        },
+        "Id": "0Ad7F000000D0dUSAS",
+        "AuraDefinitionBundleId": "0Ab7F000000CkUWSA0",
+        "AuraDefinitionBundle": {
+            "attributes": {
+                "type": "AuraDefinitionBundle",
+                "url": "/services/data/v40.0/tooling/sobjects/AuraDefinitionBundle/0Ab7F000000CkUWSA0"
+            },
+            "DeveloperName": "AddressFinder"
+        },
+        "DefType": "CONTROLLER",
+        "Format": "JS"
+    },
+    {
+        "attributes": {
+            "type": "AuraDefinition",
+            "url": "/services/data/v40.0/tooling/sobjects/AuraDefinition/0Ad7F000000D1JcSAK"
+        },
+        "Id": "0Ad7F000000D1JcSAK",
+        "AuraDefinitionBundleId": "0Ab7F000000CkUWSA0",
+        "AuraDefinitionBundle": {
+            "attributes": {
+                "type": "AuraDefinitionBundle",
+                "url": "/services/data/v40.0/tooling/sobjects/AuraDefinitionBundle/0Ab7F000000CkUWSA0"
+            },
+            "DeveloperName": "AddressFinder"
+        },
+        "DefType": "RENDERER",
+        "Format": "JS"
+    },
+    {
+        "attributes": {
+            "type": "AuraDefinition",
+            "url": "/services/data/v40.0/tooling/sobjects/AuraDefinition/0Ad7F000000D1JrSAK"
+        },
+        "Id": "0Ad7F000000D1JrSAK",
+        "AuraDefinitionBundleId": "0Ab7F000000CkUWSA0",
+        "AuraDefinitionBundle": {
+            "attributes": {
+                "type": "AuraDefinitionBundle",
+                "url": "/services/data/v40.0/tooling/sobjects/AuraDefinitionBundle/0Ab7F000000CkUWSA0"
+            },
+            "DeveloperName": "AddressFinder"
+        },
+        "DefType": "HELPER",
+        "Format": "JS"
+    },
+    {
+        "attributes": {
+            "type": "AuraDefinition",
+            "url": "/services/data/v40.0/tooling/sobjects/AuraDefinition/0Ad7F000000D1JmSAK"
+        },
+        "Id": "0Ad7F000000D1JmSAK",
+        "AuraDefinitionBundleId": "0Ab7F000000CkUWSA0",
+        "AuraDefinitionBundle": {
+            "attributes": {
+                "type": "AuraDefinitionBundle",
+                "url": "/services/data/v40.0/tooling/sobjects/AuraDefinitionBundle/0Ab7F000000CkUWSA0"
+            },
+            "DeveloperName": "AddressFinder"
+        },
+        "DefType": "DESIGN",
+        "Format": "XML"
+    },
+    {
+        "attributes": {
+            "type": "AuraDefinition",
+            "url": "/services/data/v40.0/tooling/sobjects/AuraDefinition/0Ad7F000000D1b8SAC"
+        },
+        "Id": "0Ad7F000000D1b8SAC",
+        "AuraDefinitionBundleId": "0Ab7F000000CkfsSAC",
+        "AuraDefinitionBundle": {
+            "attributes": {
+                "type": "AuraDefinitionBundle",
+                "url": "/services/data/v40.0/tooling/sobjects/AuraDefinitionBundle/0Ab7F000000CkfsSAC"
+            },
+            "DeveloperName": "AddressFinderApp"
+        },
+        "DefType": "HELPER",
+        "Format": "JS"
+    },
+    {
+        "attributes": {
+            "type": "AuraDefinition",
+            "url": "/services/data/v40.0/tooling/sobjects/AuraDefinition/0Ad7F000000D1bXSAS"
+        },
+        "Id": "0Ad7F000000D1bXSAS",
+        "AuraDefinitionBundleId": "0Ab7F000000CkfsSAC",
+        "AuraDefinitionBundle": {
+            "attributes": {
+                "type": "AuraDefinitionBundle",
+                "url": "/services/data/v40.0/tooling/sobjects/AuraDefinitionBundle/0Ab7F000000CkfsSAC"
+            },
+            "DeveloperName": "AddressFinderApp"
+        },
+        "DefType": "STYLE",
+        "Format": "CSS"
+    },
+    {
+        "attributes": {
+            "type": "AuraDefinition",
+            "url": "/services/data/v40.0/tooling/sobjects/AuraDefinition/0Ad7F000000D1bhSAC"
+        },
+        "Id": "0Ad7F000000D1bhSAC",
+        "AuraDefinitionBundleId": "0Ab7F000000CkfsSAC",
+        "AuraDefinitionBundle": {
+            "attributes": {
+                "type": "AuraDefinitionBundle",
+                "url": "/services/data/v40.0/tooling/sobjects/AuraDefinitionBundle/0Ab7F000000CkfsSAC"
+            },
+            "DeveloperName": "AddressFinderApp"
+        },
+        "DefType": "SVG",
+        "Format": "SVG"
+    },
+    {
+        "attributes": {
+            "type": "AuraDefinition",
+            "url": "/services/data/v40.0/tooling/sobjects/AuraDefinition/0Ad7F000000D1bcSAC"
+        },
+        "Id": "0Ad7F000000D1bcSAC",
+        "AuraDefinitionBundleId": "0Ab7F000000CkfsSAC",
+        "AuraDefinitionBundle": {
+            "attributes": {
+                "type": "AuraDefinitionBundle",
+                "url": "/services/data/v40.0/tooling/sobjects/AuraDefinitionBundle/0Ab7F000000CkfsSAC"
+            },
+            "DeveloperName": "AddressFinderApp"
+        },
+        "DefType": "DOCUMENTATION",
+        "Format": "XML"
+    },
+    {
+        "attributes": {
+            "type": "AuraDefinition",
+            "url": "/services/data/v40.0/tooling/sobjects/AuraDefinition/0Ad7F000000D1bSSAS"
+        },
+        "Id": "0Ad7F000000D1bSSAS",
+        "AuraDefinitionBundleId": "0Ab7F000000CkfsSAC",
+        "AuraDefinitionBundle": {
+            "attributes": {
+                "type": "AuraDefinitionBundle",
+                "url": "/services/data/v40.0/tooling/sobjects/AuraDefinitionBundle/0Ab7F000000CkfsSAC"
+            },
+            "DeveloperName": "AddressFinderApp"
+        },
+        "DefType": "CONTROLLER",
+        "Format": "JS"
+    },
+    {
+        "attributes": {
+            "type": "AuraDefinition",
+            "url": "/services/data/v40.0/tooling/sobjects/AuraDefinition/0Ad7F000000D1b3SAC"
+        },
+        "Id": "0Ad7F000000D1b3SAC",
+        "AuraDefinitionBundleId": "0Ab7F000000CkfsSAC",
+        "AuraDefinitionBundle": {
+            "attributes": {
+                "type": "AuraDefinitionBundle",
+                "url": "/services/data/v40.0/tooling/sobjects/AuraDefinitionBundle/0Ab7F000000CkfsSAC"
+            },
+            "DeveloperName": "AddressFinderApp"
+        },
+        "DefType": "RENDERER",
+        "Format": "JS"
+    },
+    {
+        "attributes": {
+            "type": "AuraDefinition",
+            "url": "/services/data/v40.0/tooling/sobjects/AuraDefinition/0Ad7F000000D1ElSAK"
+        },
+        "Id": "0Ad7F000000D1ElSAK",
+        "AuraDefinitionBundleId": "0Ab7F000000CkfsSAC",
+        "AuraDefinitionBundle": {
+            "attributes": {
+                "type": "AuraDefinitionBundle",
+                "url": "/services/data/v40.0/tooling/sobjects/AuraDefinitionBundle/0Ab7F000000CkfsSAC"
+            },
+            "DeveloperName": "AddressFinderApp"
+        },
+        "DefType": "APPLICATION",
+        "Format": "XML"
+    },
+    {
+        "attributes": {
+            "type": "AuraDefinition",
+            "url": "/services/data/v40.0/tooling/sobjects/AuraDefinition/0Ad7F000000D7XOSA0"
+        },
+        "Id": "0Ad7F000000D7XOSA0",
+        "AuraDefinitionBundleId": "0Ab7F000000Cn1DSAS",
+        "AuraDefinitionBundle": {
+            "attributes": {
+                "type": "AuraDefinitionBundle",
+                "url": "/services/data/v40.0/tooling/sobjects/AuraDefinitionBundle/0Ab7F000000Cn1DSAS"
+            },
+            "DeveloperName": "AFApplication"
+        },
+        "DefType": "APPLICATION",
+        "Format": "XML"
+    },
+    {
+        "attributes": {
+            "type": "AuraDefinition",
+            "url": "/services/data/v40.0/tooling/sobjects/AuraDefinition/0Ad7F000000D7XTSA0"
+        },
+        "Id": "0Ad7F000000D7XTSA0",
+        "AuraDefinitionBundleId": "0Ab7F000000Cn1DSAS",
+        "AuraDefinitionBundle": {
+            "attributes": {
+                "type": "AuraDefinitionBundle",
+                "url": "/services/data/v40.0/tooling/sobjects/AuraDefinitionBundle/0Ab7F000000Cn1DSAS"
+            },
+            "DeveloperName": "AFApplication"
+        },
+        "DefType": "DOCUMENTATION",
+        "Format": "XML"
+    },
+    {
+        "attributes": {
+            "type": "AuraDefinition",
+            "url": "/services/data/v40.0/tooling/sobjects/AuraDefinition/0Ad7F000000D7XYSA0"
+        },
+        "Id": "0Ad7F000000D7XYSA0",
+        "AuraDefinitionBundleId": "0Ab7F000000Cn1DSAS",
+        "AuraDefinitionBundle": {
+            "attributes": {
+                "type": "AuraDefinitionBundle",
+                "url": "/services/data/v40.0/tooling/sobjects/AuraDefinitionBundle/0Ab7F000000Cn1DSAS"
+            },
+            "DeveloperName": "AFApplication"
+        },
+        "DefType": "SVG",
+        "Format": "SVG"
+    },
+    {
+        "attributes": {
+            "type": "AuraDefinition",
+            "url": "/services/data/v40.0/tooling/sobjects/AuraDefinition/0Ad7F000000D7XdSAK"
+        },
+        "Id": "0Ad7F000000D7XdSAK",
+        "AuraDefinitionBundleId": "0Ab7F000000Cn1ISAS",
+        "AuraDefinitionBundle": {
+            "attributes": {
+                "type": "AuraDefinitionBundle",
+                "url": "/services/data/v40.0/tooling/sobjects/AuraDefinitionBundle/0Ab7F000000Cn1ISAS"
+            },
+            "DeveloperName": "AFComponent"
+        },
+        "DefType": "COMPONENT",
+        "Format": "XML"
+    },
+    {
+        "attributes": {
+            "type": "AuraDefinition",
+            "url": "/services/data/v40.0/tooling/sobjects/AuraDefinition/0Ad7F000000D7XsSAK"
+        },
+        "Id": "0Ad7F000000D7XsSAK",
+        "AuraDefinitionBundleId": "0Ab7F000000Cn1ISAS",
+        "AuraDefinitionBundle": {
+            "attributes": {
+                "type": "AuraDefinitionBundle",
+                "url": "/services/data/v40.0/tooling/sobjects/AuraDefinitionBundle/0Ab7F000000Cn1ISAS"
+            },
+            "DeveloperName": "AFComponent"
+        },
+        "DefType": "CONTROLLER",
+        "Format": "JS"
+    },
+    {
+        "attributes": {
+            "type": "AuraDefinition",
+            "url": "/services/data/v40.0/tooling/sobjects/AuraDefinition/0Ad7F000000D7XiSAK"
+        },
+        "Id": "0Ad7F000000D7XiSAK",
+        "AuraDefinitionBundleId": "0Ab7F000000Cn1ISAS",
+        "AuraDefinitionBundle": {
+            "attributes": {
+                "type": "AuraDefinitionBundle",
+                "url": "/services/data/v40.0/tooling/sobjects/AuraDefinitionBundle/0Ab7F000000Cn1ISAS"
+            },
+            "DeveloperName": "AFComponent"
+        },
+        "DefType": "HELPER",
+        "Format": "JS"
+    },
+    {
+        "attributes": {
+            "type": "AuraDefinition",
+            "url": "/services/data/v40.0/tooling/sobjects/AuraDefinition/0Ad7F000000D7XnSAK"
+        },
+        "Id": "0Ad7F000000D7XnSAK",
+        "AuraDefinitionBundleId": "0Ab7F000000Cn1ISAS",
+        "AuraDefinitionBundle": {
+            "attributes": {
+                "type": "AuraDefinitionBundle",
+                "url": "/services/data/v40.0/tooling/sobjects/AuraDefinitionBundle/0Ab7F000000Cn1ISAS"
+            },
+            "DeveloperName": "AFComponent"
+        },
+        "DefType": "DOCUMENTATION",
+        "Format": "XML"
+    }
+]
