@@ -8,12 +8,14 @@
     "instanceUrl": "https://addressfinder-dev-ed.my.salesforce.com",
     "workspace": "/Users/andrewfrench/repositories/abletech",
     "subscription": [
+        "ApexClass",
         "CorsWhitelistOrigin",
         "CspTrustedSite",
         "CustomApplication",
         "CustomApplicationComponent",
-        "CustomMetadata",
+        "CustomObject",
         "InstalledPackage",
+        "Layout",
         "StaticResource"
     ]
 }

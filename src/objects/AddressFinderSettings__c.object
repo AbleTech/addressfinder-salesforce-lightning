@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Settings for the AddressFinder Widget</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Country_Code__c</fullName>
+        <defaultValue>&quot;nz&quot;</defaultValue>
+        <description>The country code associated with the address service required.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Only &apos;nz&apos; and &apos;au&apos; are allowed</inlineHelpText>
+        <label>Country Code</label>
+        <length>2</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Key__c</fullName>
+        <description>The key for the AddressFinder API service</description>
+        <externalId>false</externalId>
+        <inlineHelpText>To find your API key:- 
+ - go to https://addressfinder.nz/
+ - log in
+ - click &apos;Overview&apos;
+ - Key is present in the &apos;Account&apos; section</inlineHelpText>
+        <label>Key</label>
+        <length>40</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>AddressFinder Settings</label>
+    <visibility>Public</visibility>
+</CustomObject>
