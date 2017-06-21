@@ -1,15 +1,18 @@
 ({
     afterScriptsLoaded : function(component, event, helper) {
-       component.set("v.isScriptLoaded", true);
-       if(component.get("v.isRendered") === true) {
-            helper.setupWidget(component);
-        }
+      helper.actionSucceeded("v.isScriptLoaded", component);
     },
-    
+
     handleDoneRendering : function(component, event, helper) {
-        component.set("v.isRendered", true);
-       if(component.get("v.isScriptLoaded") === true) {
-            helper.setupWidget(component);
+      var hasAlreadyBeenRendered = component.get("v.isRendered");
+      if(!hasAlreadyBeenRendered) {
+        var variable = component.get("v.addressFieldSet");
+        var fieldSet = document.querySelector(variable);
+        if(fieldSet) {
+          helper.actionSucceeded("v.isRendered", component);
+          helper.createAction(component, "c.getConfigKey", "v.afKey", "v.isKeyRetrieved", true);
+          helper.createAction(component, "c.getConfigCountryCode", "v.countryCode", "v.isCountryCodeRetrieved", false);
         }
+      }
     }
 })

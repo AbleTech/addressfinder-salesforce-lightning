@@ -9,13 +9,11 @@
     "workspace": "/Users/andrewfrench/repositories/abletech",
     "subscription": [
         "ApexClass",
+        "AuraDefinitionBundle",
         "CorsWhitelistOrigin",
         "CspTrustedSite",
-        "CustomApplication",
-        "CustomApplicationComponent",
         "CustomObject",
         "InstalledPackage",
-        "Layout",
         "StaticResource"
     ]
 }

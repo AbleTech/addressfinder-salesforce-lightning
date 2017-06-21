@@ -1,6 +1,46 @@
-({
+({  
+    createAction : function(component, serverMethod, variableName, flagName, shouldAlert) {
+      var action = component.get(serverMethod);
+      action.setCallback(this, function(response) {
+        var state = response.getState();
+            if (state === "SUCCESS") {
+              var key = response.getReturnValue();
+              if(key !== null) {
+                component.set(variableName, key);
+                this.actionSucceeded(flagName, component);
+              }
+              else if(shouldAlert) {
+                alert("'" + variableName + "' has not been set for the AddressFinder widget.\n This can be set by an administrator in the AddressFinder Config\nSetup -> Custom Settings -> AddressFinder Config -> Manage -> New");
+              }
+            }
+            else if (state === "ERROR") {
+                var errors = response.getError();
+                if (errors) {
+                    if (errors[0] && errors[0].message) {
+                      console.error(variableName, "Error message: " + errors[0].message);
+                    }
+                } 
+                else {
+                    console.error(variableName, "Unknown error");
+                }
+            }
+      });
+      $A.enqueueAction(action);
+    },
+    
+    checkForRequirements : function(component) {
+        if(component.get("v.afKey") && component.get("v.countryCode") && component.get("v.isKeyRetrieved") === true && component.get("v.isCountryCodeRetrieved") === true) {
+          this.setupWidget(component);
+        }
+      },
+    
+    actionSucceeded : function(flagName, component) {
+      component.set(flagName, true);
+      this.checkForRequirements(component);
+    },
+    
     setupWidget : function(component) {
-        if(component.get("v.isWidgetSetup") == false) {
+        if(component.get("v.isWidgetSetup") === false) {
             console.debug("setupWidget");
             var fieldSet = document.querySelector("fieldset.forceInputAddress");
             if(fieldSet) {

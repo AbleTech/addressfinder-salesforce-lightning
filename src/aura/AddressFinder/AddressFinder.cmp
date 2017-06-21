@@ -1,11 +1,16 @@
-<aura:component implements="force:appHostable,force:lightningQuickAction,flexipage:availableForAllPageTypes" access="global" >
+<aura:component implements="force:appHostable,force:lightningQuickAction,flexipage:availableForAllPageTypes" access="global" controller="AddressFinderApexController" >
     <ltng:require scripts="{!$Resource.AddressFinderWidget}" afterScriptsLoaded="{!c.afterScriptsLoaded}" />
     
-    <aura:attribute access="global" name="afKey" type="String" default="B8F6KAMNGCTJYPDE4HL9"/>
-    <aura:attribute access="global" name="countryCode" type="String" default="nz"/>
+    <aura:attribute name="addressFieldSet" type="String" default="fieldset.forceInputAddress"/>
+    <aura:attribute access="global" name="afKey" type="String"/>
+    <aura:attribute access="global" name="countryCode" type="String"/>
     
     <aura:attribute name="isRendered" type="Boolean" default="false"/>
     <aura:attribute name="isScriptLoaded" type="Boolean" default="false"/>
+    <aura:attribute name="isKeyRetrieved" type="Boolean" default="false"/>
+    <aura:attribute name="isCountryCodeRetrieved" type="Boolean" default="false"/>
+    
+    
     <aura:attribute name="isWidgetSetup" type="Boolean" default="false"/>
     
     <aura:handler event="aura:doneRendering" action="{!c.handleDoneRendering}"/>
