@@ -58,5 +58,20 @@
         "namespacePrefix": "addressfinder",
         "type": "CspTrustedSite",
         "mmState": "clean"
+    },
+    "Config__c.object": {
+        "createdById": "0057F000000uAgqQAE",
+        "createdByName": "A F",
+        "createdDate": "2017-06-19T02:21:50.000Z",
+        "fileName": "unpackaged/objects/Config__c.object",
+        "fullName": "Config__c",
+        "id": "01I7F000000QtllUAC",
+        "lastModifiedById": "0057F000000uAgqQAE",
+        "lastModifiedByName": "A F",
+        "lastModifiedDate": "2017-06-19T02:30:43.000Z",
+        "manageableState": "unmanaged",
+        "namespacePrefix": "addressfinder",
+        "type": "CustomObject",
+        "mmState": "clean"
     }
 }
