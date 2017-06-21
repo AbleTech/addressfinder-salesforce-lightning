@@ -1,4 +1,4 @@
-# AddressFinder Saleforce Lightning Plugin
+# AddressFinder Salesforce Lightning Plugin
 
 ## Development Environment Setup
 1. Register as a Saleforce developer with dev account etc
@@ -13,3 +13,15 @@ Install [MavensMate for Atom](https://github.com/joeferraro/MavensMate-Atom). Ei
 
 ### Sublime Development Setup (not attempted)
 See above but install [MavensMate for Sublime Text](https://github.com/joeferraro/MavensMate-SublimeText) 
+
+## Salesforce Admin Setup
+* Goto _Setup_ -> _Lightning App Builder_ -> _New_
+    * select _Record Page_ -> _Next_
+    * Fill in _Label_ and select _Object_ (that has an address)
+    * Select _Clone Salesforce Default Page_ -> _Finish_
+    * Type 'AddressFinder' into the search box
+        * Click on _AddressFinder_ (under _Custom_)
+        * Click _Activation_
+            * Click _Org Default_ -> _Assign As Org Default_ -> _Close_
+            * _Save_
+  * PROFIT
