@@ -1,48 +1,59 @@
 # Administrator Setup
 
-These are the steps for setting up the **AddressFinder** Plugin for Salesforce Lightning (_force.com_).
+These are the steps for setting up the **_AddressFinder_** Lightning App for Salesforce.
 
-It is assumed that the user performing these steps has _customization_ privileges for their Salesforce application. 
+It is assumed that the user performing these steps has _customization_ privileges for their Salesforce application.
 
 ## Setup Steps
-There are only **three** steps to setting the **AddressFinder** plugin correctly.
-1. [Install the **AddressFinder** plugin from the Lightning App Exchange as you would with any plugin.](#install-plugin-from-the-lightning-app-exchange)
-1. [Add your **AddressFinder** account key as a record in the _AddressFinder Config Custom Setting_.](#setup-account-key)
-1. [Add the **AddressFinder** plugin to any record page layouts with which you wish to use the **AddressFinder** service.](#add-plugin-to-record-page)
+There are only **three** steps to setting the _AddressFinder_ plugin correctly.
+1. [Install the _AddressFinder_ plugin from the Lightning App Exchange as you would with any plugin.](#install-plugin-from-the-lightning-app-exchange)
+1. [Add your _AddressFinder_ account key as a record in the _AddressFinder Config Custom Setting_.](#setup-account-key)
+1. [Add **addressfinder.io** to you app's Trusted Sites](#add-addressfinder-to-your-trusted-sites)
+1. [Add the plugin's Lightning Component to any record page layouts with which you wish to use the _AddressFinder_ service.](#add-plugin-to-record-page)
 
 (More details are provided :point_down: - click the links :point_up: to go straight to the appropriate section below)
 
 
 ### Salesforce Admin Setup
 
-#### Install Plugin From The Lightning App
+#### Install Plugin From The AppExchange
 * Go to the AppExchange
-    * Either, via your app: <br>_App Launcher_ -> _Visit AppExchange_ (top right) and search for **AddressFinder** (one word)
-    * or, directly from our [app homepage on the AppExchange](https://appexchange.salesforce.com/) **TODO**
-* Click _Get It Now_ 
+    * **Either**, via your app:
+        * `App Launcher` -> `Visit AppExchange` (top right)
+        * search for 'AddressFinder' (one word)
+    * **Or**, directly from our [app homepage on the AppExchange](https://appexchange.salesforce.com/) **TODO**
+* Click `Get It Now` 
 * Log in (as required)
 
 
 #### Setup Account Key
-* Goto _Setup_
-    * -> _Custom Code_ -> _Custom Settings_ 
-    * -> _Manage_ on __AddressFinder Config__
-    * -> _New_
-        * _Name_ (can be anything)
-        * _Country Code_ (either 'nz' for New Zealand or 'au' for Australia)
-        * _Key_ - your **AddressFinder** account key (can be found at [your AddressFinder portal](https://portal.addressfinder.io/portal))
-        * _Save_
+* Goto `Setup`
+    * -> `Custom Code` -> `Custom Settings` 
+    * -> `Manage` next to the _AddressFinder Config_ name
+    * -> `New`
+        * _Name_ - any name you wish to give it
+        * _Country Code_ - either 'nz' for New Zealand or 'au' for Australia)
+        * _Key_ - your _AddressFinder_ account key (can be found at [your _AddressFinder_ portal](https://portal.addressfinder.io/portal))
+        * `Save`
+        
+#### Add AddressFinder To Your Trusted Sites
+**NB** this only allows your site to make requests to _addressfinder.io_. These can be monitored via the browser developer tools to see in detail.
+* Goto `Setup`
+    * -> `CSP Trusted Sites` -> `New Trusted Site`
+        * _Trusted Site Name_ - any name you wish to give it
+        * _Trusted Site URL_ - _https://api.addressfinder.io _
+        * `Save`
 
 
 #### Add Plugin to Record Page
-* Goto _Setup_
-    * select _Lightning App Builder_ -> _New_
-    * select _Record Page_ -> _Next_
-    * Fill in _Label_ and select the _Object_ (that has an address e.g. **User**)
-    * Select _Clone Salesforce Default Page_ -> _Finish_
-    * Type 'AddressFinder' into the search box
-        * Click on _AddressFinder_ (under _Custom_)
-        * Click _Activation_
-            * Click _Org Default_ -> _Assign As Org Default_ -> _Close_
-            * _Save_
+* Goto `Setup`
+    * select `Lightning App Builder` -> `New`
+    * select `Record Page` -> `Next`
+    * Fill in `Label` and select the `Object` (that has an address e.g. _User_)
+    * Select `Clone Salesforce Default Page` -> `Finish`
+    * Type `AddressFinder` into the search box
+        * Click on `AddressFinder` (under `Custom`)
+        * Click `Activation`
+            * Click `Org Default` -> `Assign As Org Default` -> `Close`
+            * `Save`
     * PROFIT
