@@ -4,6 +4,8 @@ These are the steps for setting up the **_AddressFinder_** Lightning App for Sal
 
 It is assumed that the user performing these steps has _customization_ privileges for their Salesforce application.
 
+If you complete the [Setup Steps](#setup-steps) below and the _AddressFinder_ service is not auto-suggesting addresses as it should, please refer to the [Troubleshooting](#troubleshooting) section.
+
 ## Setup Steps
 There are only **three** steps to setting the _AddressFinder_ plugin correctly.
 1. [Install the _AddressFinder_ plugin from the Lightning App Exchange as you would with any plugin.](#install-plugin-from-the-lightning-app-exchange)
@@ -57,3 +59,9 @@ There are only **three** steps to setting the _AddressFinder_ plugin correctly.
             * Click `Org Default` -> `Assign As Org Default` -> `Close`
             * `Save`
     * PROFIT
+    
+    
+## Troubleshooting
+We're sorry you're having problems but we promise we'll do our utmost to help you! 
+
+Firstly we need to work out what is going wrong.
