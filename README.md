@@ -59,9 +59,3 @@ There are only **three** steps to setting the _AddressFinder_ plugin correctly.
             * Click `Org Default` -> `Assign As Org Default` -> `Close`
             * `Save`
     * PROFIT
-    
-    
-## Troubleshooting
-We're sorry you're having problems but we promise we'll do our utmost to help you! 
-
-Firstly we need to work out what is going wrong.
