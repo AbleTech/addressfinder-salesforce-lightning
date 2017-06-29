@@ -15,6 +15,7 @@ There are only **three** steps to setting the _AddressFinder_ plugin correctly.
 
 (More details are provided :point_down: - click the links :point_up: to go straight to the appropriate section below)
 
+***
 
 ### 1. Install Plugin From The AppExchange
 * Go to the AppExchange
@@ -25,6 +26,7 @@ There are only **three** steps to setting the _AddressFinder_ plugin correctly.
 * Click `Get It Now` 
 * Log in (as required)
 
+***
 
 ### 2. Setup Account Key
 * Goto `Setup`
@@ -35,15 +37,17 @@ There are only **three** steps to setting the _AddressFinder_ plugin correctly.
         * _Country Code_ - either 'nz' for New Zealand or 'au' for Australia)
         * _Key_ - your _AddressFinder_ account key (can be found at [your _AddressFinder_ portal](https://portal.addressfinder.io/portal))
         * `Save`
+***
         
 ### 3. Add AddressFinder To Your Trusted Sites
 **NB** this only allows your site to make requests to _addressfinder.io_. These can be monitored via the browser developer tools to see in detail.
 * Goto `Setup`
     * -> `CSP Trusted Sites` -> `New Trusted Site`
         * _Trusted Site Name_ - any name you wish to give it
-        * _Trusted Site URL_ - _https://api.addressfinder.io _
+        * _Trusted Site URL_ - 'https://api.addressfinder.io'
         * `Save`
 
+***
 
 ### 4. Add Plugin to Record Page
 * Goto `Setup`
