@@ -16,9 +16,7 @@ There are only **three** steps to setting the _AddressFinder_ plugin correctly.
 (More details are provided :point_down: - click the links :point_up: to go straight to the appropriate section below)
 
 
-### Salesforce Admin Setup
-
-#### Install Plugin From The AppExchange
+### 1. Install Plugin From The AppExchange
 * Go to the AppExchange
     * **Either**, via your app:
         * `App Launcher` -> `Visit AppExchange` (top right)
@@ -28,7 +26,7 @@ There are only **three** steps to setting the _AddressFinder_ plugin correctly.
 * Log in (as required)
 
 
-#### Setup Account Key
+### 2. Setup Account Key
 * Goto `Setup`
     * -> `Custom Code` -> `Custom Settings` 
     * -> `Manage` next to the _AddressFinder Config_ name
@@ -38,7 +36,7 @@ There are only **three** steps to setting the _AddressFinder_ plugin correctly.
         * _Key_ - your _AddressFinder_ account key (can be found at [your _AddressFinder_ portal](https://portal.addressfinder.io/portal))
         * `Save`
         
-#### Add AddressFinder To Your Trusted Sites
+### 3. Add AddressFinder To Your Trusted Sites
 **NB** this only allows your site to make requests to _addressfinder.io_. These can be monitored via the browser developer tools to see in detail.
 * Goto `Setup`
     * -> `CSP Trusted Sites` -> `New Trusted Site`
@@ -47,7 +45,7 @@ There are only **three** steps to setting the _AddressFinder_ plugin correctly.
         * `Save`
 
 
-#### Add Plugin to Record Page
+### 4. Add Plugin to Record Page
 * Goto `Setup`
     * select `Lightning App Builder` -> `New`
     * select `Record Page` -> `Next`
