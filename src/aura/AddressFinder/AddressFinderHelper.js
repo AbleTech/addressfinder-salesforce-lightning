@@ -41,7 +41,6 @@
     
     setupWidget : function(component) {
         if(component.get("v.isWidgetSetup") === false) {
-            console.debug("setupWidget");
             var fieldSet = document.querySelector("fieldset.forceInputAddress");
             if(fieldSet) {
                 var addrIdMap = this.makeAddressElementMap(fieldSet); 
@@ -96,13 +95,7 @@
             xhr.onreadystatechange = function(event) {
                 if (xhr.readyState == 4) {
                     if (xhr.status === 200) {                        
-                        var response = JSON.parse(xhr.response);
-                        setFieldValue(addrIdMap["streetId"], response.postal_line_1 );
-                        setFieldValue(addrIdMap["cityId"], response.city);
-                        setFieldValue(addrIdMap["provinceId"], response.region);
-                        setFieldValue(addrIdMap["postcodeId"], response.postcode);
-                        setFieldValue(addrIdMap["countryId"], countryCode === 'nz' ? "New Zealand" : "Australia");
-                        
+                        setAddress(JSON.parse(xhr.response));
                     } else {
                         console.error(xhr);
                         console.error(xhr.status);
@@ -112,6 +105,28 @@
             
             xhr.open('GET', url, true);
             xhr.send(null);
+            
+            function setAddress(response) {
+                setFieldValue(addrIdMap["countryId"], countryCode === 'nz' ? "New Zealand" : "Australia");
+                var address = response.a;
+                
+                // get full address string from widget result
+                var addressComponents = address.split(', ');
+                var componentCount = addressComponents.length;
+                
+                //Split out the street address and format it
+                var streetAddress = addressComponents.slice(0, componentCount - 1).join('\n');
+                setFieldValue(addrIdMap["streetId"], streetAddress);
+                
+                //Split out the city and postcode
+                var cityAndPostcode = addressComponents[componentCount - 1].split(' ');
+                var city = cityAndPostcode.slice(0, cityAndPostcode.length - 1).join(' ');
+                var postcode = cityAndPostcode[cityAndPostcode.length - 1];
+                setFieldValue(addrIdMap["cityId"], city);
+                setFieldValue(addrIdMap["postcodeId"], postcode);
+                
+                setFieldValue(addrIdMap["provinceId"], response.region);
+            }
             
             function setFieldValue(elementId, value) {
                 var field = document.getElementById(elementId);
@@ -135,7 +150,6 @@
                         var placeholderValue = map[key];
                         if (field.placeholder.toUpperCase().includes(placeholderValue)) {
                             addrIdMap[key] = field.id;
-                            console.debug(placeholderValue);
                             break;
                         }
                     }
