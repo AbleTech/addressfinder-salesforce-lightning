@@ -37,6 +37,8 @@ There are only **three** steps to setting the _AddressFinder_ plugin correctly.
         * _Country Code_ - either 'nz' for New Zealand or 'au' for Australia)
         * _Key_ - your _AddressFinder_ account key (can be found at [your _AddressFinder_ portal](https://portal.addressfinder.io/portal))
         * `Save`
+        
+[![setup account key video](screenshots/setup_custom_setting.png)]( "Add AddressFinder Account Key to Salesforce")
 ***
         
 ### 3. Add AddressFinder To Your Trusted Sites
@@ -44,9 +46,10 @@ There are only **three** steps to setting the _AddressFinder_ plugin correctly.
 * Goto `Setup`
     * -> `CSP Trusted Sites` -> `New Trusted Site`
         * _Trusted Site Name_ - any name you wish to give it
-        * _Trusted Site URL_ - 'https://api.addressfinder.io'
+        * _Trusted Site URL_ - 'https://<span></span>api.addressfinder.io'
         * `Save`
-
+        
+[![add trusted site video](screenshots/setup_trusted_sites.png)]( "Add addressfinder.io to Trusted Sites")
 ***
 
 ### 4. Add Plugin to Record Page
@@ -61,3 +64,5 @@ There are only **three** steps to setting the _AddressFinder_ plugin correctly.
             * Click `Org Default` -> `Assign As Org Default` -> `Close`
             * `Save`
     * PROFIT
+    
+[![add plugin to page video](screenshots/setup_add_plugin.png)]( "the AddressFinder widget to a record page")
