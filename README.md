@@ -38,7 +38,7 @@ There are only **three** steps to setting the _AddressFinder_ plugin correctly.
         * _Key_ - your _AddressFinder_ account key (can be found at [your _AddressFinder_ portal](https://portal.addressfinder.io/portal))
         * `Save`
         
-[![setup account key video](screenshots/setup_custom_setting.png)]( "Add AddressFinder Account Key to Salesforce")
+[![setup account key video](screenshots/setup_custom_setting.png)](https://vimeo.com/224009500/10ac0d3dae "Add AddressFinder Account Key to Salesforce")
 ***
         
 ### 3. Add AddressFinder To Your Trusted Sites
@@ -49,7 +49,7 @@ There are only **three** steps to setting the _AddressFinder_ plugin correctly.
         * _Trusted Site URL_ - 'https://<span></span>api.addressfinder.io'
         * `Save`
         
-[![add trusted site video](screenshots/setup_trusted_sites.png)]( "Add addressfinder.io to Trusted Sites")
+[![add trusted site video](screenshots/setup_trusted_sites.png)](https://vimeo.com/224004384/c36af17e93 "Add addressfinder.io to Trusted Sites")
 ***
 
 ### 4. Add Plugin to Record Page
@@ -65,4 +65,4 @@ There are only **three** steps to setting the _AddressFinder_ plugin correctly.
             * `Save`
     * PROFIT
     
-[![add plugin to page video](screenshots/setup_add_plugin.png)]( "the AddressFinder widget to a record page")
+[![add plugin to page video](screenshots/setup_add_plugin.png)](https://vimeo.com/224009807/d6ac70b80f "the AddressFinder widget to a record page")
