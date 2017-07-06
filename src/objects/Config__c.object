@@ -6,8 +6,9 @@
     <fields>
         <fullName>Country_Code__c</fullName>
         <defaultValue>&quot;nz&quot;</defaultValue>
+        <deprecated>false</deprecated>
         <description>The country code associated with the address service required.</description>
-        <externalId>false</externalId>
+        <externalId>true</externalId>
         <inlineHelpText>Only &apos;nz&apos; and &apos;au&apos; are allowed</inlineHelpText>
         <label>Country Code</label>
         <length>2</length>
@@ -18,6 +19,7 @@
     </fields>
     <fields>
         <fullName>Key__c</fullName>
+        <deprecated>false</deprecated>
         <description>The key for the AddressFinder API service</description>
         <externalId>false</externalId>
         <inlineHelpText>To find your API key:- 
