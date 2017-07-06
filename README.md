@@ -2,9 +2,14 @@
 
 These are the steps for setting up the **_AddressFinder_** Lightning App for Salesforce.
 
-It is assumed that the user performing these steps has _customization_ privileges for their Salesforce application.
-
 If you complete the [Setup Steps](#setup-steps) below and the _AddressFinder_ service is not auto-suggesting addresses as it should, please refer to the [Troubleshooting](troubleshooting.md) section.
+
+## Prerequisites
+* Whoever is performing these steps has **customization** privileges for their Salesforce application.
+* The organisation has signed up for the **_AddressFinder_** service already at https://portal.addressfinder.io/signup/nz/ (for NZ) or https://portal.addressfinder.io/signup/au (for Australia).
+NB your domain for signup is likely to be `salesforce.com`
+
+***
 
 ## Setup Steps
 There are only **three** steps to setting the _AddressFinder_ plugin correctly.
