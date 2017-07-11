@@ -4,13 +4,13 @@
     <aura:attribute name="addressFieldSet" type="String" default="fieldset.forceInputAddress"/>
     <aura:attribute access="global" name="afKey" type="String"/>
     <aura:attribute access="global" name="countryCode" type="String"/>
+    <aura:attribute access="global" name="version" type="String"/>
     
     <aura:attribute name="isRendered" type="Boolean" default="false"/>
     <aura:attribute name="isScriptLoaded" type="Boolean" default="false"/>
     <aura:attribute name="isKeyRetrieved" type="Boolean" default="false"/>
     <aura:attribute name="isCountryCodeRetrieved" type="Boolean" default="false"/>
-    
-    
+    <aura:attribute name="isVersionRetrieved" type="Boolean" default="false"/>
     <aura:attribute name="isWidgetSetup" type="Boolean" default="false"/>
     
     <aura:handler event="aura:doneRendering" action="{!c.handleDoneRendering}"/>

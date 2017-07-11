@@ -18,4 +18,13 @@ public with sharing class AddressFinderApexController {
         return null;
     }
     
+    @AuraEnabled
+    public static String getAppVersion() {
+        Version version = System.requestVersion();
+        if(version != null) {
+            return version.major() + '.' + version.minor();
+        }
+        return '?';
+    }
+    
 }

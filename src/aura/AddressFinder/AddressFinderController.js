@@ -12,6 +12,7 @@
           helper.actionSucceeded("v.isRendered", component);
           helper.createAction(component, "c.getConfigKey", "v.afKey", "v.isKeyRetrieved", true);
           helper.createAction(component, "c.getConfigCountryCode", "v.countryCode", "v.isCountryCodeRetrieved", false);
+          helper.createAction(component, "c.getAppVersion", "v.version", "v.isVersionRetrieved", false);
         }
       }
     }

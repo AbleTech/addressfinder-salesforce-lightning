@@ -29,7 +29,7 @@
     },
     
     checkForRequirements : function(component) {
-        if(component.get("v.afKey") && component.get("v.countryCode") && component.get("v.isKeyRetrieved") === true && component.get("v.isCountryCodeRetrieved") === true) {
+        if(component.get("v.afKey") && component.get("v.countryCode") && component.get("v.isKeyRetrieved") === true && component.get("v.isCountryCodeRetrieved") === true && component.get("v.isVersionRetrieved") === true) {
           this.setupWidget(component);
         }
       },
@@ -46,19 +46,21 @@
                 var addrIdMap = this.makeAddressElementMap(fieldSet); 
                 var key = component.get("v.afKey");
                 var countryCode = component.get("v.countryCode");
+                var version = component.get("v.version");
                 var widget = new AddressFinder.Widget(document.getElementById(addrIdMap["streetId"]), 
                                                       key, 
                                                       countryCode, 
                                                       { show_addresses: false });        
-                this.addWidgetService(widget, countryCode, key, addrIdMap);
+                this.addWidgetService(widget, countryCode, key, addrIdMap, version);
                 component.set("v.isWidgetSetup", true);
             }
         }
     },
     
-    addWidgetService : function(widget, countryCode, key, addrIdMap) {
+    addWidgetService : function(widget, countryCode, key, addrIdMap, version) {
+        var base_url = 'https://api.addressfinder.io/api/'+ countryCode +'/address?key=' + key + '&format=json&widget_token=aaddcfa38b26e65330108190dd642a79f2ce04b738a68077dd28f15eb81d9f237ccbdea9b982a9d1ef09ecbb7eb5d67b463a96a36390aaf9325db2d93cf52a0z&sfv=' + version;
         var service = widget.addService('store-search', function(query, response_fn) {
-            var url = 'https://api.addressfinder.io/api/'+ countryCode +'/address?key=' + key + '&format=json&q=' + query;
+            var url = base_url  + '&q=' + query;
             
             var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function(event) {
@@ -80,17 +82,16 @@
             xhr.open('GET', url, true);
             xhr.send(null); 
         });
-        this.setServiceOptions(service, countryCode, key, addrIdMap);
+        this.setServiceOptions(service, addrIdMap, base_url);
     },
     
-    setServiceOptions : function(service, countryCode, key, addrIdMap) {        
+    setServiceOptions : function(service, addrIdMap, base_url) {        
         service.setOption("renderer", function(value) {
             return "<li>" + value + "</li>";
         });
         
         service.on("result:select", function(value, data) {
-            var url = 'https://api.addressfinder.io/api/'+ countryCode +'/address/info?key=' + key + '&format=json&pxid=' + data;
-            
+            var url = base_url.replace('/address', '/address/info') + '&pxid=' + data;
             var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function(event) {
                 if (xhr.readyState == 4) {
@@ -142,9 +143,9 @@
     makeAddressElementMap : function(addressFieldSet) {
         var addrIdMap = {};
         if(addressFieldSet != null) {
-            for (let type of ["textarea", "input"]) {
+            for (var type in ["textarea", "input"]) {
                 var typeInputs = addressFieldSet.querySelectorAll(type);
-                for(var field of typeInputs) {
+                for(var field in typeInputs) {
                     var map =  { streetId: "STREET", cityId: "CITY", provinceId: "STATE", postcodeId: "CODE", countryId: "COUNTRY" };
                     for (var key in map) {
                         var placeholderValue = map[key];
