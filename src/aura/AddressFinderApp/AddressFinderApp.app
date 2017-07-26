@@ -1,3 +1,3 @@
-<aura:application access="GLOBAL">
+<aura:application access="GLOBAL" extends="force:slds">
 	<c:AddressFinder />
 </aura:application>

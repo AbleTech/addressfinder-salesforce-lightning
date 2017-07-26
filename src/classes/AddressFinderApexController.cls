@@ -24,7 +24,15 @@ public with sharing class AddressFinderApexController {
         if(version != null) {
             return version.major() + '.' + version.minor();
         }
-        return '?';
+        return 'unknown';
+    }
+    
+    @AuraEnabled
+    public static Sobject fetchRecord(Id recordId, String fieldsToShow) {
+        String objectName = recordId.getSobjectType().getDescribe().getName();
+        String soql = 'Select ' + fieldsToShow + ' from ' + objectName + ' where Id = :recordId';
+        Sobject rec = Database.query(soql);
+        return rec;
     }
     
 }

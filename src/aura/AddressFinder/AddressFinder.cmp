@@ -1,18 +1,108 @@
-<aura:component implements="force:appHostable,force:lightningQuickAction,flexipage:availableForAllPageTypes" access="global" controller="AddressFinderApexController" >
-    <ltng:require scripts="{!$Resource.AddressFinderWidget}" afterScriptsLoaded="{!c.afterScriptsLoaded}" />
+<aura:component implements="force:appHostable,flexipage:availableForRecordHome,force:hasRecordId,force:hasSObjectName" access="global" controller="AddressFinderApexController">
+  
+  <ltng:require scripts="{!$Resource.AddressFinderWidget}" afterScriptsLoaded="{!c.afterScriptsLoaded}"/>
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+  <!-- <aura:handler name="render" value="{!this}" action="{!c.onRender}"/> -->
+  
+  <aura:attribute access="global" name="afKey" type="String"/>
+  <aura:attribute access="global" name="countryCode" type="String"/>
+  <aura:attribute access="global" name="version" type="String"/>
+  
+  <aura:attribute name="isRetrieved" type="Boolean" default="false"/>
+  <aura:attribute name="isRendered" type="Boolean" default="false"/>
+  <aura:attribute name="isScriptLoaded" type="Boolean" default="false"/>
+  <aura:attribute name="isKeyRetrieved" type="Boolean" default="false"/>
+  <aura:attribute name="isCountryCodeRetrieved" type="Boolean" default="false"/>
+  <aura:attribute name="isVersionRetrieved" type="Boolean" default="false"/>
+  <aura:attribute name="isWidgetSetup" type="Boolean" default="false"/>
+  
+  <aura:attribute name="fieldsToShow" type="String" default="Address"/>
+  <aura:attribute name="detailRecord" type="Address"/>  
+  <aura:attribute name="fieldList" type="String[]" />
+   
+  
+  <div class="slds-m-around--large">
+    <button class="slds-button slds-button--brand" onclick="{!c.openModal}">Edit With AddressFinder</button>  
+      
+    <!--###### MODAL BOX######--> 
+    <div aura:id="modal-dialog" role="dialog" tabindex="-1" aria-labelledby="header99" class="slds-hide slds-modal slds-fade-in-open ">
+      <div class="slds-modal__container">
+        
+        <div class="slds-modal__header">
+          <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.closeModal}">
+          X
+          <span class="slds-assistive-text">Close</span>
+          </button>
+          <h2 id="header99" class="slds-text-heading--medium">Edit With AddressFinder</h2>
+        </div>
+        
+        <div aura:id="modal-body" class="slds-modal__content slds-p-around--medium">
+          <div style="width: 440px;">
+            <div class="slds-form slds-form_compound">
+              <fieldset id="fieldset-address" class="slds-form-element">
+                <legend class="slds-form-element__label slds-text-title_caps">Address</legend>
+                <div class="slds-form-element__group">
+                  <div class="slds-form-element__row">
+                    <div class="slds-form-element slds-size_1-of-1">
+                      <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="input-street">Street</label>
+                        <div class="slds-form-element__control">
+                          <textarea name="input-street" id="input-street" class="slds-textarea" placeholder="Street Address" value="{!v.detailRecord.street}"/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="slds-form-element__row">
+                    <div class="slds-form-element slds-size_1-of-2">
+                      <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="input-city">City</label>
+                        <div class="slds-form-element__control">
+                          <input type="text" id="input-city" class="slds-input" value="{!v.detailRecord.city}"/>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="slds-form-element slds-size_1-of-2">
+                      <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="input-state">State/Province</label>
+                        <div class="slds-form-element__control">
+                          <input type="text" id="input-state" class="slds-input" value="{!v.detailRecord.state}"/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="slds-form-element__row">
+                    <div class="slds-form-element slds-size_1-of-2">
+                      <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="input-postalCode">Zip/Postal Code</label>
+                        <div class="slds-form-element__control">
+                          <input type="text" id="input-postalCode" class="slds-input" value="{!v.detailRecord.postalCode}"/>
+                        </div>
+                      </div>
+                    </div>
+                      <div class="slds-form-element slds-size_1-of-2">
+                        
+                        <div class="slds-form-element">
+                          <label class="slds-form-element__label" for="input-country">Country</label>
+                          <div class="slds-form-element__control">
+                            <input type="text" id="input-country" class="slds-input" value="{!v.detailRecord.country}"/>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+        </div>
+        
+        <div class="slds-modal__footer">
+          <button class="slds-button slds-button--neutral" onclick="{!c.closeModal}" >Cancel</button>
+          <button class="slds-button slds-button--brand" onclick="{!c.saveAndClose}">Save</button>
+        </div>
+      </div>
+    </div>
+    <div aura:id="modal-backdrop" class="slds-hide slds-backdrop slds-backdrop--open"/>
     
-    <aura:attribute name="addressFieldSet" type="String" default="fieldset.forceInputAddress"/>
-    <aura:attribute access="global" name="afKey" type="String"/>
-    <aura:attribute access="global" name="countryCode" type="String"/>
-    <aura:attribute access="global" name="version" type="String"/>
-    
-    <aura:attribute name="isRendered" type="Boolean" default="false"/>
-    <aura:attribute name="isScriptLoaded" type="Boolean" default="false"/>
-    <aura:attribute name="isKeyRetrieved" type="Boolean" default="false"/>
-    <aura:attribute name="isCountryCodeRetrieved" type="Boolean" default="false"/>
-    <aura:attribute name="isVersionRetrieved" type="Boolean" default="false"/>
-    <aura:attribute name="isWidgetSetup" type="Boolean" default="false"/>
-    
-    <aura:handler event="aura:doneRendering" action="{!c.handleDoneRendering}"/>
+  </div>
 
 </aura:component>
