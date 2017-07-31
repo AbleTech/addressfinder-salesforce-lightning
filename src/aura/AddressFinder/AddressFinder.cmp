@@ -2,7 +2,6 @@
   
   <ltng:require scripts="{!$Resource.AddressFinderWidget}" afterScriptsLoaded="{!c.afterScriptsLoaded}"/>
   <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
-  <!-- <aura:handler name="render" value="{!this}" action="{!c.onRender}"/> -->
   
   <aura:attribute access="global" name="afKey" type="String"/>
   <aura:attribute access="global" name="countryCode" type="String"/>
@@ -16,10 +15,14 @@
   <aura:attribute name="isVersionRetrieved" type="Boolean" default="false"/>
   <aura:attribute name="isWidgetSetup" type="Boolean" default="false"/>
   
-  <aura:attribute name="fieldsToShow" type="String" default="Address"/>
-  <aura:attribute name="detailRecord" type="Address"/>  
-  <aura:attribute name="fieldList" type="String[]" />
-   
+  <aura:attribute name="address" type="Address"/> 
+  <!-- <aura:attribute name="record" type="Sobject"/>  -->
+  
+  <!-- <aura:attribute name="street" type="String"/>
+  <aura:attribute name="city" type="String"/>
+  <aura:attribute name="state" type="String"/>
+  <aura:attribute name="postalCode" type="String"/>
+  <aura:attribute name="country" type="String"/> -->
   
   <div class="slds-m-around--large">
     <button class="slds-button slds-button--brand" onclick="{!c.openModal}">Edit With AddressFinder</button>  
@@ -47,7 +50,7 @@
                       <div class="slds-form-element">
                         <label class="slds-form-element__label" for="input-street">Street</label>
                         <div class="slds-form-element__control">
-                          <textarea name="input-street" id="input-street" class="slds-textarea" placeholder="Street Address" value="{!v.detailRecord.street}"/>
+                          <textarea name="input-street" id="input-street" class="slds-textarea" placeholder="Street Address" value="{!v.address.street}"/>
                         </div>
                       </div>
                     </div>
@@ -57,7 +60,7 @@
                       <div class="slds-form-element">
                         <label class="slds-form-element__label" for="input-city">City</label>
                         <div class="slds-form-element__control">
-                          <input type="text" id="input-city" class="slds-input" value="{!v.detailRecord.city}"/>
+                          <input type="text" id="input-city" class="slds-input" value="{!v.address.city}"/>
                         </div>
                       </div>
                     </div>
@@ -65,7 +68,7 @@
                       <div class="slds-form-element">
                         <label class="slds-form-element__label" for="input-state">State/Province</label>
                         <div class="slds-form-element__control">
-                          <input type="text" id="input-state" class="slds-input" value="{!v.detailRecord.state}"/>
+                          <input type="text" id="input-state" class="slds-input" value="{!v.address.state}"/>
                         </div>
                       </div>
                     </div>
@@ -75,7 +78,7 @@
                       <div class="slds-form-element">
                         <label class="slds-form-element__label" for="input-postalCode">Zip/Postal Code</label>
                         <div class="slds-form-element__control">
-                          <input type="text" id="input-postalCode" class="slds-input" value="{!v.detailRecord.postalCode}"/>
+                          <input type="text" id="input-postalCode" class="slds-input" value="{!v.address.postalCode}"/>
                         </div>
                       </div>
                     </div>
@@ -84,7 +87,7 @@
                         <div class="slds-form-element">
                           <label class="slds-form-element__label" for="input-country">Country</label>
                           <div class="slds-form-element__control">
-                            <input type="text" id="input-country" class="slds-input" value="{!v.detailRecord.country}"/>
+                            <input type="text" id="input-country" class="slds-input" value="{!v.address.country}"/>
                           </div>
                         </div>
                       </div>

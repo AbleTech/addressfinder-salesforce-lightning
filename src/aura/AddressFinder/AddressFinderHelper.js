@@ -12,29 +12,48 @@
   },
   
   saveAndToggleModal: function(component) {
-    var saved = this.saveAddress();
-    if(saved) {
-      this.toggleModal(component);
+    var helper = this;
+    var saveAddressAction = component.get("c.persistAddress");
+    // this.setAddressOnRecord(component);
+    var address = component.get("v.address");
+    var recordId = component.get("v.recordId");
+    saveAddressAction.setParams( { address: JSON.stringify(address), recordId: recordId } );
+    saveAddressAction.setCallback(this, function(response) {
+      helper.saveAddressCallback(response, helper, component);
+    });
+    $A.enqueueAction(saveAddressAction);
+  },
+  
+  // setAddressOnRecord: function(component) {
+  //   var record = component.get("v.record");
+  //   record.Address.street = component.get("v.street");
+  //   record.Address.city = component.get("v.city");
+  //   record.Address.state = component.get("v.state");
+  //   record.Address.postalCode = component.get("v.postalCode");
+  //   record.Address.country = component.get("v.country");
+  //   console.debug('AF-address: ' + JSON.stringify(record.Address));
+  // }, 
+  
+  saveAddressCallback: function(response, helper, component) {
+    var state = response.getState();
+    var toast;
+    if(state !== "SUCCESS") {
+      toast = { "title": "Failed To Save", "message": "The address could not be saved at this time."};
+      console.error('Problem saving address', response.getError()[0] );
+      helper.fireToast(toast);
     }
-    this.fireToast(saved);
+    else {
+      toast = { "title": "Address Saved", "message": "The AddressFinder-verified address was successfully saved."};
+      helper.toggleModal(component);
+      helper.fireToast(toast);
+      $A.get("e.force:refreshView").fire();
+    }
   },
   
-  saveAddress: function(component) {
-    
-  },
-  
-  fireToast: function(success) {
-    var toastParams = this.getSaveToastParams(saved);
+  fireToast: function(toastParams) {
     var resultsToast = $A.get("e.force:showToast");
     resultsToast.setParams(toastParams);
     resultsToast.fire();
-  },
-  
-  getSaveToastParams: function(success) {
-    if(success) {
-      return { "title": "Address Saved", "message": "The AddressFinder-verified address was successfully saved."};
-    }
-    return { "title": "Failed To Save", "message": "The address could not be saved at this time."};
   },
 
   createAction: function(component, serverMethod, variableName, flagName, shouldAlert) {
@@ -103,7 +122,6 @@
 
       var xhr = new XMLHttpRequest();
       xhr.onreadystatechange = function(event) {
-        console.debug("AF-KEY-onreadystatechange");
         if (xhr.readyState === 4) {
           if (xhr.status === 200) {
             var response = JSON.parse(xhr.response);
@@ -129,21 +147,18 @@
   },
 
   setServiceOptions: function(service, component, base_url, countryCode) {
+    var helper = this;
     service.setOption("renderer", function(value) {
       return "<li>" + value + "</li>";
     });
 
     service.on("result:select", function(value, data) {
-      console.debug("AF-result:select");
       var url = base_url.replace('/address', '/address/info') + '&pxid=' + data;
       var xhr = new XMLHttpRequest();
       xhr.onreadystatechange = function(event) {
-        console.debug("AF-onreadystatechange", xhr.readyState);
         if (xhr.readyState === 4) {
-          console.debug("AF-4");
           if (xhr.status === 200) {
-            console.debug("AF-200");
-            setAddress(JSON.parse(xhr.response), countryCode);
+            helper.setAddress(JSON.parse(xhr.response), countryCode, component);
           } else {
             console.error(xhr);
             console.error(xhr.status);
@@ -154,59 +169,62 @@
       xhr.open('GET', url, true);
       xhr.send(null);
 
-      function setAddress(response, countryCode) {
-        console.debug("AF-setAddress");
-        setFieldValue("#input-country", countryCode === 'nz' ? "New Zealand" : "Australia");
-        var address = response.a;
-
-        // get full address string from widget result
-        var addressComponents = address.split(', ');
-        var componentCount = addressComponents.length;
-
-        //Split out the street address and format it
-        var streetAddress = addressComponents.slice(0, componentCount - 1).join('\n');
-        setFieldValue("#input-street", streetAddress);
-
-        //Split out the city and postcode
-        var cityAndPostcode = addressComponents[componentCount - 1].split(' ');
-        var city = cityAndPostcode.slice(0, cityAndPostcode.length - 1).join(' ');
-        var postcode = cityAndPostcode[cityAndPostcode.length - 1];
-        setFieldValue("#input-city", city);
-        setFieldValue("#input-postalCode", postcode);
-
-        setFieldValue("#input-state", response.region);
-      }
-
-      function setFieldValue(elementId, fieldValue) {
-        console.debug("AF-setFieldValue", elementId);
-        var field = document.querySelector(elementId);
-        if (field) {
-          field.value = fieldValue;
-          return;
-        }
-        else {
-          console.error('Field ID: ' + elementId + '\nValue: ' + fieldValue + ' could not be found.\n');
-        }
-      }
     });
+  },
+  
+  setAddress: function(response, countryCode, component) {
+    var country = (countryCode === 'nz' ? "New Zealand" : "Australia");
+    this.setFieldValue("country", country, component);
+    var addr = response.a;
+
+    // get full address string from widget result
+    var addressComponents = addr.split(', ');
+    var componentCount = addressComponents.length;
+
+    //Split out the street address and format it
+    var street = addressComponents.slice(0, componentCount - 1).join('\n');
+    this.setFieldValue("street", street, component);
+
+    //Split out the city and postalCode
+    var cityAndPostcode = addressComponents[componentCount - 1].split(' ');
+    var city = cityAndPostcode.slice(0, cityAndPostcode.length - 1).join(' ');
+    var postalCode = cityAndPostcode[cityAndPostcode.length - 1];
+    this.setFieldValue("city", city, component);
+    this.setFieldValue("postalCode", postalCode, component);
+   	var state = response.region;
+    this.setFieldValue("state", state, component);
+    this.setAddressVariable(street, city, postalCode, state, country, component);
+  },
+    
+    setAddressVariable: function(street, city, postalCode, state, country, component) {
+        var addr = new Object();
+        addr.street = street;
+        addr.city = city;
+        addr.postalCode = postalCode;
+        addr.state = state;
+        addr.country = country;
+        component.set('v.address', addr);
+    },
+
+  setFieldValue: function(elementId, fieldValue, component) {
+    var field = document.querySelector("#input-" + elementId);
+    if (field) {
+      field.value = fieldValue;
+    }
+    else {
+      console.error('Field ID: ' + elementId + '\nValue: ' + fieldValue + ' could not be found.\n');
+    }
   },
 
   getRecord: function(component) {
     var helper = this;
-    var fields = component.get("v.fieldsToShow");
     var recordId = component.get("v.recordId");
     var action = component.get("c.fetchRecord");
-    var fieldList = fields.split(',');
-    var fieldMap = new Object();
-    component.set("v.fieldList", fieldList);
-    action.setParams({
-      recordId: recordId,
-      fieldsToShow: fields
-    });
+    action.setParams({ recordId: recordId, aggregated: true });
     
     action.setCallback(this, function(a) {
-      component.set("v.detailRecord", a.getReturnValue().Address);
-      helper.actionSucceeded("v.isRetrieved", component);
+        component.set("v.address", a.getReturnValue().Address);
+    	helper.actionSucceeded("v.isRetrieved", component);
     });
     $A.enqueueAction(action);
   },
@@ -216,20 +234,5 @@
       this.actionSucceeded("v.isRendered", component);
     }
   },
-  
-  // setAddress: function(address) {
-  //   this.setAddressToInput("#input-street", address.street);
-  //   this.setAddressToInput("#input-city", address.city);
-  //   this.setAddressToInput("#input-country", address.country);
-  //   this.setAddressToInput("#input-state", address.state);
-  //   this.setAddressToInput("#input-postalCode", address.postalCode);
-  // },
-  // 
-  // setAddressToInput: function(inputName, value) {
-  //   var element = document.getElementById(inputName);
-  //   if(element && value !== null) {
-  //     element.value = value;
-  //   }
-  // }
 
 })
