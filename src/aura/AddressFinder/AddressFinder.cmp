@@ -16,13 +16,6 @@
   <aura:attribute name="isWidgetSetup" type="Boolean" default="false"/>
   
   <aura:attribute name="address" type="Address"/> 
-  <!-- <aura:attribute name="record" type="Sobject"/>  -->
-  
-  <!-- <aura:attribute name="street" type="String"/>
-  <aura:attribute name="city" type="String"/>
-  <aura:attribute name="state" type="String"/>
-  <aura:attribute name="postalCode" type="String"/>
-  <aura:attribute name="country" type="String"/> -->
   
   <div class="slds-m-around--large">
     <button class="slds-button slds-button--brand" onclick="{!c.openModal}">Edit With AddressFinder</button>  

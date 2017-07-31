@@ -24,16 +24,6 @@
     $A.enqueueAction(saveAddressAction);
   },
   
-  // setAddressOnRecord: function(component) {
-  //   var record = component.get("v.record");
-  //   record.Address.street = component.get("v.street");
-  //   record.Address.city = component.get("v.city");
-  //   record.Address.state = component.get("v.state");
-  //   record.Address.postalCode = component.get("v.postalCode");
-  //   record.Address.country = component.get("v.country");
-  //   console.debug('AF-address: ' + JSON.stringify(record.Address));
-  // }, 
-  
   saveAddressCallback: function(response, helper, component) {
     var state = response.getState();
     var toast;
