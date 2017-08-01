@@ -3,66 +3,44 @@ public with sharing class AddressFinderApexController {
     @AuraEnabled
     public static String getConfigKey() {
         List<Config__C> configs = Config__C.getAll().values();
-        if(configs != null && configs.size() > 0) {
-            return configs[0].Key__c;
-        }
-        return null;
+        return (configs != null && configs.size() > 0 ? configs[0].Key__c : null);
     }
     
     @AuraEnabled
     public static String getConfigCountryCode() {
         List<Config__C> configs = Config__C.getall().values();
-        if(configs != null && configs.size() > 0) {
-            return configs[0].Country_Code__c;
-        }
-        return null;
+        return (configs != null && configs.size() > 0 ? configs[0].Country_Code__c : null);
     }
     
     @AuraEnabled
     public static String getAppVersion() {
         Version version = System.requestVersion();
-        if(version != null) {
-            return version.major() + '.' + version.minor();
-        }
-        return 'unknown';
+        return (version == null ? 'unknown' : version.major() + '.' + version.minor());
     }
     
     @AuraEnabled
     public static Sobject fetchRecord(Id recordId, Boolean aggregated) {
-        String fieldsToShow = getFieldNames(aggregated);
-        String objectName = recordId.getSobjectType().getDescribe().getName();
-        String soql = 'Select ' + fieldsToShow + ' from ' + objectName + ' where Id = :recordId';
-        Sobject rec = Database.query(soql);
-        if(rec == null) {
-            rec = recordId.getSobjectType().newSObject();
+        String fieldsToShow = aggregated ? 'Address' : 'street, city, state, postalCode, country';
+        if(recordId != null) {
+          String objectName = recordId.getSobjectType().getDescribe().getName();
+          String soql = 'Select ' + fieldsToShow + ' from ' + objectName + ' where Id = :recordId';
+          Sobject rec = Database.query(soql);
+          return (rec == null ? recordId.getSobjectType().newSObject() : rec);
         }
-        return rec;
-    }
-    
-    private static String getFieldNames(Boolean aggregated) {
-        String fieldsToShow;
-        if(aggregated) {
-            fieldsToShow = 'Address';
-        }
-        else {
-            fieldsToShow = 'street, city, state, postalCode, country';
-        }
-        return fieldsToShow;
+        return null;
     }
     
     @AuraEnabled
-    public static void persistAddress(String address, Id recordId) {
-      Map<String, Object> m = (Map<String, Object>)JSON.deserializeUntyped(address);
-        if(!m.isEmpty()) {
-            Sobject rec = fetchRecord(recordId, false);
-            if(rec != null) {
-                for(String key: m.keySet()) {
-                    rec.put(key, m.get(key));
-                }
-                System.debug(JSON.serialize (rec));
-                upsert rec;
+    public static Sobject persistAddress(String address, Id recordId) {
+        Sobject rec = fetchRecord(recordId, false);
+        Map<String, Object> m = (Map<String, Object>)JSON.deserializeUntyped(address);
+        if(rec != null && !m.isEmpty()) {
+            for(String key: m.keySet()) {
+                rec.put(key, m.get(key));
             }
+            upsert rec;
         }
+        return rec;
     }
     
 }
