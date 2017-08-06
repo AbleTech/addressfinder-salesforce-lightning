@@ -14,4 +14,23 @@ public class TestUserFactory {
        insert u;
 			 return u;
 		 }
+		 
+		 public static Account createTestAccount() {
+			 Account a = new Account(Name='TestAccount');
+			 a.BillingStreet='27 Billing Street';
+			 a.BillingCity='Billing';
+			 a.ShippingStreet='27 Shipping Street';
+			 a.ShippingCity='Shipping';
+			 insert a;
+			 return a;
+		 }
+		 
+		 public static Contact createTestContact() {
+			 Account a = createTestAccount();
+			 Contact c = new Contact(firstname='TestFirstName', lastname='TestLastName', AccountId=a.id);
+			 c.MailingStreet='27 Mailing Street';
+			 c.MailingCity='Mailing';
+			 insert c;
+			 return c;
+		 }
 }

@@ -15,10 +15,42 @@
   <aura:attribute name="isVersionRetrieved" type="Boolean" default="false"/>
   <aura:attribute name="isWidgetSetup" type="Boolean" default="false"/>
   
-  <aura:attribute name="address" type="Address"/> 
+  <aura:attribute name="addresses" type="Map"/>
+  <aura:attribute name="selectedAddress" type="Address"/>
+  <aura:attribute name="addressTypes" type="List"/> 
+  <aura:attribute name="selectedAddressType" type="String" default="Address"/> 
   
   <div class="slds-m-around--large">
-    <button class="slds-button slds-button--brand" onclick="{!c.openModal}">Edit With AddressFinder</button>  
+    <div class="slds-form slds-form_compound">
+      <div style="background: beige; padding: 5px; width: 50%; margin: 0 auto;">
+        <fieldset id="fieldset-address" class="slds-form-element">
+          <legend class="slds-form-element__label slds-text-title_caps">Address Types</legend>
+          
+          <div class="slds-form-element__row">
+            <div class="slds-form-element slds-size_1-of-2">
+              <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                  <ui:inputSelect aura:id="address-types" change="{!c.onAddressTypeChange}">
+                    
+                        <ui:inputSelectOption text="-- select an option --" label="-- select an option --" disabled="true" value="true"/>
+                      <aura:iteration items="{!v.addressTypes}" var="addressType">
+                           <ui:inputSelectOption text="{!addressType}" label="{!addressType}"/>
+                      </aura:iteration>
+                  </ui:inputSelect>
+                </div>
+              </div>
+            </div>
+            <div class="slds-form-element slds-size_1-of-2">
+              <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                  <ui:button aura:id="edit" disabled="true" class="slds-button slds-button--brand" press="{!c.openModal}">Edit With AddressFinder</ui:button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+    </div>
       
     <!--###### MODAL BOX######--> 
     <div aura:id="modal-dialog" role="dialog" tabindex="-1" aria-labelledby="header99" class="slds-hide slds-modal slds-fade-in-open ">
@@ -36,14 +68,14 @@
           <div style="width: 440px;">
             <div class="slds-form slds-form_compound">
               <fieldset id="fieldset-address" class="slds-form-element">
-                <legend class="slds-form-element__label slds-text-title_caps">Address</legend>
+                <legend class="slds-form-element__label slds-text-title_caps">{!v.selectedAddressType}</legend>
                 <div class="slds-form-element__group">
                   <div class="slds-form-element__row">
                     <div class="slds-form-element slds-size_1-of-1">
                       <div class="slds-form-element">
                         <label class="slds-form-element__label" for="input-street">Street</label>
                         <div class="slds-form-element__control">
-                          <textarea name="input-street" id="input-street" class="slds-textarea" placeholder="Street Address" value="{!v.address.street}"/>
+                          <textarea name="input-street" id="input-street" class="slds-textarea" placeholder="Street Address" value="{!v.selectedAddress.street}"/>
                         </div>
                       </div>
                     </div>
@@ -53,7 +85,7 @@
                       <div class="slds-form-element">
                         <label class="slds-form-element__label" for="input-city">City</label>
                         <div class="slds-form-element__control">
-                          <input type="text" id="input-city" class="slds-input" value="{!v.address.city}"/>
+                          <input type="text" id="input-city" class="slds-input" value="{!v.selectedAddress.city}"/>
                         </div>
                       </div>
                     </div>
@@ -61,7 +93,7 @@
                       <div class="slds-form-element">
                         <label class="slds-form-element__label" for="input-state">State/Province</label>
                         <div class="slds-form-element__control">
-                          <input type="text" id="input-state" class="slds-input" value="{!v.address.state}"/>
+                          <input type="text" id="input-state" class="slds-input" value="{!v.selectedAddress.state}"/>
                         </div>
                       </div>
                     </div>
@@ -71,7 +103,7 @@
                       <div class="slds-form-element">
                         <label class="slds-form-element__label" for="input-postalCode">Zip/Postal Code</label>
                         <div class="slds-form-element__control">
-                          <input type="text" id="input-postalCode" class="slds-input" value="{!v.address.postalCode}"/>
+                          <input type="text" id="input-postalCode" class="slds-input" value="{!v.selectedAddress.postalCode}"/>
                         </div>
                       </div>
                     </div>
@@ -80,7 +112,7 @@
                         <div class="slds-form-element">
                           <label class="slds-form-element__label" for="input-country">Country</label>
                           <div class="slds-form-element__control">
-                            <input type="text" id="input-country" class="slds-input" value="{!v.address.country}"/>
+                            <input type="text" id="input-country" class="slds-input" value="{!v.selectedAddress.country}"/>
                           </div>
                         </div>
                       </div>

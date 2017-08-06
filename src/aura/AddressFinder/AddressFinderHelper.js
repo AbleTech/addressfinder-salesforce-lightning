@@ -14,10 +14,10 @@
   saveAndToggleModal: function(component) {
     var helper = this;
     var saveAddressAction = component.get("c.persistAddress");
-    // this.setAddressOnRecord(component);
-    var address = component.get("v.address");
+    var address = component.get("v.selectedAddress");
     var recordId = component.get("v.recordId");
-    saveAddressAction.setParams( { address: JSON.stringify(address), recordId: recordId } );
+    var addressType = component.get("v.selectedAddressType");
+    saveAddressAction.setParams( { address: JSON.stringify(address), addressType: addressType , recordId: recordId } );
     saveAddressAction.setCallback(this, function(response) {
       helper.saveAddressCallback(response, helper, component);
     });
@@ -193,7 +193,7 @@
         addr.postalCode = postalCode;
         addr.state = state;
         addr.country = country;
-        component.set('v.address', addr);
+        component.set('v.selectedAddress', addr);
     },
 
   setFieldValue: function(elementId, fieldValue, component) {
@@ -206,14 +206,14 @@
     }
   },
 
-  getRecord: function(component) {
+  getRecordAddresses: function(component) {
     var helper = this;
     var recordId = component.get("v.recordId");
-    var action = component.get("c.fetchRecord");
-    action.setParams({ recordId: recordId, aggregated: true });
     
+    var action = component.get("c.fetchRecordAddresses");
+    action.setParams({ recordId: recordId, aggregated: true });
     action.setCallback(this, function(a) {
-        component.set("v.address", a.getReturnValue().Address);
+      component.set("v.addresses", a.getReturnValue());
     	helper.actionSucceeded("v.isRetrieved", component);
     });
     $A.enqueueAction(action);
@@ -223,6 +223,25 @@
     if(document.querySelector("#input-street")) {
       this.actionSucceeded("v.isRendered", component);
     }
+  },
+  
+  getAddressTypes: function(component) {
+    var recordId = component.get("v.recordId");
+    var action = component.get("c.getAddressTypesForRecord");
+    action.setParams({ recordId: recordId });
+    
+    action.setCallback(this, function(a) {
+      component.set("v.addressTypes", a.getReturnValue());
+    });
+    $A.enqueueAction(action);
+  },
+  
+  onAddressTypeChange: function(component, event) {
+    var addressType = event.getSource().get("v.value");
+    component.set("v.selectedAddressType",  addressType);
+    var addresses = component.get("v.addresses");
+    component.set("v.selectedAddress", addresses[addressType]);
+    component.find("edit").set("v.disabled", (addressType == null));
   },
 
 })

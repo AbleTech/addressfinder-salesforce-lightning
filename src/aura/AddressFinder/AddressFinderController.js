@@ -19,6 +19,11 @@
   },
   
   doInit: function(component, event, helper) {
-    helper.getRecord(component);
+    helper.getAddressTypes(component);
+    helper.getRecordAddresses(component);
+  },
+  
+  onAddressTypeChange: function(component, event, helper) {
+    helper.onAddressTypeChange(component, event);
   },
 })
