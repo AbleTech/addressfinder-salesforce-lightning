@@ -1,4 +1,4 @@
-Copyright (c) 2016-present Abletech
+Copyright (c) 2017-present Abletech
 
 The intellectual property rights in this plugin are owned by Abletech Limited of Wellington New Zealand (referred to below as “we”, “us” or “our”) or its third party licensors.  The plugin may be accessed and used by AddressFinder customers only, subject to the following terms. If you are not, or are no longer, an AddressFinder customer you are not permitted to access or use the plugin in any way.  
 
